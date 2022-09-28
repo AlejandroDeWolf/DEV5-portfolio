@@ -65,6 +65,10 @@ export default class Bingo {
     }
 
     localStorage.setItem("bingo", JSON.stringify(cardsWon));
+
+    if (cardsWon.length === 5) {
+      localStorage.clear();
+    }
   }
 
   static load() {
