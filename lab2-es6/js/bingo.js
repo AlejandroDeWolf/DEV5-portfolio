@@ -4,7 +4,7 @@ import Card from "./card.js";
 export default class Bingo {
   constructor() {
     // the constructor is called when you create a new instance of the class
-    console.log("Welcome to Bingo! 🎉");
+    // console.log("Welcome to Bingo! 🎉");
 
     // an array including 25 cards (5x5)
     this.cards = [
@@ -44,7 +44,7 @@ export default class Bingo {
 
   renderCards() {
     // this function renders the cards to the screen
-    console.log("rendering cards");
+    // console.log("rendering cards");
 
     // 🔥🔥🔥 TODO 2
     // loop through all the cards in the array and create a new instance of a Card()
@@ -57,13 +57,13 @@ export default class Bingo {
     for (let i = 0; i < this.cards.length; i++) {
       let card = new Card(this.cards[i]);
       card.render(i);
-      console.log(card);
+      //   console.log(card);
     }
   }
 
   static checkWinner() {
     // a static function can be called without creating an instance of the class
-    console.log("Checking for a winner");
+    // console.log("Checking for a winner");
 
     // 🔥🔥🔥 TODO 6
     // count all cards that are marked as done (select done items and count them with .length)
@@ -94,6 +94,19 @@ export default class Bingo {
 
     // save a selection like [1, 7, 8] to localstorage item "bingo"
     // you might want to check out how JSON.stringify() works
+
+    let cards = document.querySelectorAll(".bingo__card--done");
+
+    if (cards.length === 0) {
+      localStorage.clear();
+    }
+
+    for (let i = 0; i < cards.length; i++) {
+      cardsWon.push(cards[i].dataset.number);
+      console.log(cardsWon);
+    }
+
+    localStorage.setItem("bingo", JSON.stringify(cardsWon));
   }
 
   static load() {
