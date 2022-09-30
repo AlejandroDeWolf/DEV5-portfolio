@@ -1,17 +1,9 @@
-<div id="header" align="center">
-  <img src="https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif" width="300"/>
-  
-  <h1>
-  Welcome to my dev5 portoflio!
-  <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="30px"/>
-</h1>
+# Welcome to my dev5 portfolio!
 
+Below you can find all my lab projects for dev5.
 
-| Projects  | Skill |
+| Project  | Skill |
 | ------------- |:-------------:|
-| [Lab 1](https://github.com/AlejandroDeWolf/DEV5-LAB1)      | GIT     |
-| Lab 2      |      |
-| Lab 3      |      |
-</div>
-
-
+| [LAB 1 - Using git](https://github.com/AlejandroDeWolf/DEV5-LAB1)      | GIT     |
+| [LAB 2 - Bingo game](https://github.com/AlejandroDeWolf/DEV5-portfolio/tree/main/lab2-es6)      | ES6     |
+| LAB 3      |      |
