@@ -9,20 +9,14 @@ Below you can also find a codesandbox link to the same code for a live preview a
 | [Bingo](https://9pditd.csb.app/) |
 
 
-## Template Literals
-Als we de output van javacript expressies willen combineren **zonder template literals**, gebruiken we meestal de + operator om deze te concateneren.
+## Destructuring
+Unpack values from arrays or properties from objects into a new variable.
+
+In the example below we use the rest property (...rest).
+By using this we can end the destructuring pattern and store all remaining properties inside a new array.
 ```
-let firstName = 'Alejandro';
-let lastName = 'De Wolf';
+const list = [3, 4, 5, 6];
 
-let fullName = firstName + ' ' + lastName;
-```
-
-
-We kunnen gebruik maken van template literals door backticks te gebruiken, dit zorgt voor hetzelfde resultaat met een duidelijkere syntax.
-```
-let firstName = 'Alejandro';
-let lastName = 'De Wolf';
-
-let fullName = `${firstName} ${lastName}`;
+const [one, two, ...rest] = list;
+console.log(one, two, rest); // 3, 4, [5, 6, 7, 8]
 ```
