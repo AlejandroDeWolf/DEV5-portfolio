@@ -43,9 +43,7 @@ export default class Weather {
 
   displayWeather(data) {
     const temp = data.current.temp_c;
-    document.querySelector(
-      ".temp"
-    ).textContent = `Right now it's ${temp} degrees`;
+    document.querySelector(".temp").textContent = `${temp}°C`;
 
     const weather = data.current.condition.text;
     document.querySelector(".weather").textContent = weather;
@@ -53,13 +51,21 @@ export default class Weather {
     const icon = data.current.condition.icon;
     document.querySelector(".icon").src = icon;
 
-    this.getQuote();
+    if (temp > 30) {
+      this.getQuote("inspire");
+    } else if (temp > 20) {
+      this.getQuote("management");
+    } else if (temp > 10) {
+      this.getQuote("sports");
+    } else if (temp > 0) {
+      this.getQuote("love");
+    }
   }
 
   // ------------------ QUOTE API ------------------
 
-  getQuote() {
-    const url = `https://api.quotable.io/random`;
+  getQuote(category) {
+    const url = `https://api.quotable.io/random?tags=${category}`;
 
     fetch(url)
       .then((response) => response.json())
