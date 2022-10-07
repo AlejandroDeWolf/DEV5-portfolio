@@ -1,0 +1,56 @@
+export default class Weather {
+  constructor(API_KEY) {
+    this.apiKey = API_KEY;
+
+    // check if timestamp is older than 10 minutes
+    if (
+      localStorage.getItem("weather") &&
+      Date.now() - localStorage.getItem("timestamp") < 600000
+    ) {
+      const weatherData = JSON.parse(localStorage.getItem("weather"));
+      this.displayWeather(weatherData);
+      console.log("from local storage");
+    } else {
+      this.getLocation();
+    }
+  }
+
+  getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(this.getWeather.bind(this));
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
+  }
+
+  getWeather(position) {
+    console.log(position);
+    const lat = position.coords.latitude;
+    const lon = position.coords.longitude;
+
+    const url = `http://api.weatherapi.com/v1/current.json?key=${this.apiKey}&q=${lat},${lon}&aqi=no`;
+
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        // save weather to local storage
+        localStorage.setItem("weather", JSON.stringify(data));
+        // save timestamp
+        localStorage.setItem("timestamp", Date.now());
+        this.displayWeather(data);
+      });
+  }
+
+  displayWeather(data) {
+    const temp = data.current.temp_c;
+    document.querySelector(
+      ".temp"
+    ).textContent = `Right now it's ${temp} degrees`;
+
+    const weather = data.current.condition.text;
+    document.querySelector(".weather").textContent = weather;
+
+    const icon = data.current.condition.icon;
+    document.querySelector(".icon").src = icon;
+  }
+}
