@@ -52,5 +52,28 @@ export default class Weather {
 
     const icon = data.current.condition.icon;
     document.querySelector(".icon").src = icon;
+
+    this.getQuote();
+  }
+
+  // ------------------ QUOTE API ------------------
+
+  getQuote() {
+    const url = `https://api.quotable.io/random`;
+
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        this.displayQuote(data);
+      });
+  }
+
+  displayQuote(data) {
+    const quote = data.content;
+    document.querySelector(".quote").textContent = quote;
+
+    const author = data.author;
+    document.querySelector(".author").textContent = author;
   }
 }
