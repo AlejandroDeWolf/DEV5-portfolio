@@ -28,7 +28,7 @@ export default class Weather {
     const lat = position.coords.latitude;
     const lon = position.coords.longitude;
 
-    const url = `http://api.weatherapi.com/v1/current.json?key=${this.apiKey}&q=${lat},${lon}&aqi=no`;
+    const url = `https://api.weatherapi.com/v1/current.json?key=${this.apiKey}&q=${lat},${lon}&aqi=no`;
 
     fetch(url)
       .then((response) => response.json())
