@@ -52,11 +52,11 @@ export default class Weather {
     document.querySelector(".icon").src = icon;
 
     if (temp > 30) {
-      this.getQuote("inspire");
+      this.getQuote("courage");
     } else if (temp > 20) {
-      this.getQuote("management");
+      this.getQuote("happiness");
     } else if (temp > 10) {
-      this.getQuote("sports");
+      this.getQuote("nature");
     } else if (temp > 0) {
       this.getQuote("love");
     }
