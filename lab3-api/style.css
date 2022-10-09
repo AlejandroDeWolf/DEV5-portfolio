@@ -53,7 +53,7 @@ h1 {
 .wrapper-logo {
   width: 200px;
   position: absolute;
-  bottom: 4rem;
+  bottom: 2rem;
   left: calc(50% - 100px);
 }
 
