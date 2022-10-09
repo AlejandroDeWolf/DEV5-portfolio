@@ -2,6 +2,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background: rgb(190, 150, 100, 0.4);
 }
 
 h1 {
@@ -12,29 +13,10 @@ h1 {
 #app {
   width: 300px;
   height: 600px;
-  margin: 10% auto 0;
+  margin: 14vh auto 0;
   border-radius: 10px;
   background: hsla(33, 41%, 57%, 1);
-
-  background: linear-gradient(
-    315deg,
-    hsla(33, 41%, 57%, 1) 0%,
-    hsla(33, 34%, 82%, 1) 100%
-  );
-
-  background: -moz-linear-gradient(
-    315deg,
-    hsla(33, 41%, 57%, 1) 0%,
-    hsla(33, 34%, 82%, 1) 100%
-  );
-
-  background: -webkit-linear-gradient(
-    315deg,
-    hsla(33, 41%, 57%, 1) 0%,
-    hsla(33, 34%, 82%, 1) 100%
-  );
-
-  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#BE9664", endColorstr="#E1D3C2", GradientType=1 );
+  position: relative;
 }
 
 .wrapper-weather {
@@ -46,19 +28,8 @@ h1 {
 }
 
 .temp,
-.weather {
-  font-size: 1.5rem;
-  color: #fff;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  text-align: center;
-}
-
-.wrapper-quote {
-  width: 75%;
-  margin: 4rem auto 0;
-}
-
+.weather,
+.title,
 .quote,
 .author {
   font-size: 1.5rem;
@@ -66,6 +37,37 @@ h1 {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.title {
+  margin-bottom: 1rem;
+}
+
+.wrapper-quote {
+  width: 75%;
+  margin: 3rem auto 0;
+}
+
 .quote {
   margin-bottom: 1rem;
+}
+
+.wrapper-logo {
+  width: 200px;
+  position: absolute;
+  bottom: 4rem;
+  left: calc(50% - 100px);
+}
+
+.logo {
+  width: 100%;
+}
+
+.temp,
+.weather {
+  color: rgb(242, 242, 242);
+}
+
+.title,
+.quote,
+.author {
+  color: rgb(131, 72, 0);
 }
