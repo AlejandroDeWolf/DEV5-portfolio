@@ -77,9 +77,9 @@ export default class Weather {
 
   displayQuote(data) {
     const quote = data.content;
-    document.querySelector(".quote").textContent = quote;
+    document.querySelector(".quote").textContent = `"${quote}"`;
 
     const author = data.author;
-    document.querySelector(".author").textContent = author;
+    document.querySelector(".author").textContent = `- ${author}`;
   }
 }
