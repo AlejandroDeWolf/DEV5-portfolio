@@ -1,0 +1,71 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  width: 300px;
+  height: 600px;
+  margin: 10% auto 0;
+  border-radius: 10px;
+  background: hsla(33, 41%, 57%, 1);
+
+  background: linear-gradient(
+    315deg,
+    hsla(33, 41%, 57%, 1) 0%,
+    hsla(33, 34%, 82%, 1) 100%
+  );
+
+  background: -moz-linear-gradient(
+    315deg,
+    hsla(33, 41%, 57%, 1) 0%,
+    hsla(33, 34%, 82%, 1) 100%
+  );
+
+  background: -webkit-linear-gradient(
+    315deg,
+    hsla(33, 41%, 57%, 1) 0%,
+    hsla(33, 34%, 82%, 1) 100%
+  );
+
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#BE9664", endColorstr="#E1D3C2", GradientType=1 );
+}
+
+.wrapper-weather {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  padding-top: 2rem;
+}
+
+.temp,
+.weather {
+  font-size: 1.5rem;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  text-align: center;
+}
+
+.wrapper-quote {
+  width: 75%;
+  margin: 4rem auto 0;
+}
+
+.quote,
+.author {
+  font-size: 1.5rem;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.quote {
+  margin-bottom: 1rem;
+}
