@@ -23,8 +23,21 @@ controls.screenSpacePanning = false;
 controls.minDistance = 0;
 controls.maxDistance = 100;
 
+// add ambient light
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+scene.add(ambientLight);
+
+// add directional light
+const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+directionalLight.position.set(1, 2, 2);
+scene.add(directionalLight);
+
+// add light helper
+const lightHelper = new THREE.DirectionalLightHelper(directionalLight);
+scene.add(lightHelper);
+
 const geometry = new THREE.BoxGeometry(1, 1, 1);
-const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+const material = new THREE.MeshLambertMaterial({ color: 0x00ff00 });
 const cube = new THREE.Mesh(geometry, material);
 scene.add(cube);
 
