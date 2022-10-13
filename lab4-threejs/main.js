@@ -68,6 +68,13 @@ planeLeft.position.set(-3, 0, -4);
 planeLeft.rotation.y = Math.PI / 2;
 scene.add(planeLeft);
 
+// back plane
+const geometryBack = new THREE.PlaneGeometry(6, 3);
+const planeBack = new THREE.Mesh(geometryBack, materialWalls);
+planeBack.position.set(0, 0, -8);
+planeBack.rotation.y = Math.PI;
+scene.add(planeBack);
+
 camera.position.z = 8;
 
 function animate() {
