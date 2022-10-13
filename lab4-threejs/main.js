@@ -1,5 +1,6 @@
 import * as THREE from "https://threejsfundamentals.org/threejs/resources/threejs/r122/build/three.module.js";
 import { OrbitControls } from "https://threejsfundamentals.org/threejs/resources/threejs/r122/examples/jsm/controls/OrbitControls.js";
+import { GLTFLoader } from "https://threejsfundamentals.org/threejs/resources/threejs/r122/examples/jsm/loaders/GLTFLoader.js";
 
 import "./style.css";
 
@@ -20,8 +21,8 @@ const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.dampingFactor = 0.05;
 controls.screenSpacePanning = false;
-controls.minDistance = 0;
-controls.maxDistance = 100;
+controls.minDistance = 5;
+controls.maxDistance = 80;
 
 // add ambient light
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
@@ -125,6 +126,48 @@ const knobGeometry = new THREE.SphereGeometry(0.08, 32, 32);
 const knob = new THREE.Mesh(knobGeometry, materialFloor);
 knob.position.set(0.3, -0.5, 0.1);
 scene.add(knob);
+
+// load grass texture
+const grassTexture = textureLoader.load("./assets/grass.jpg");
+
+// grass material
+const materialGrass = new THREE.MeshPhongMaterial({
+  color: 0xffffff,
+  side: THREE.DoubleSide,
+});
+
+// map grass texture to grass
+materialGrass.map = grassTexture;
+// make grass texture smaller
+grassTexture.wrapS = THREE.RepeatWrapping;
+grassTexture.wrapT = THREE.RepeatWrapping;
+grassTexture.repeat.set(160, 160);
+
+// ground plane as sphere
+const geometryGround = new THREE.SphereGeometry(100, 64, 32);
+const planeGround = new THREE.Mesh(geometryGround, materialGrass);
+planeGround.position.set(0, -101.2, -4);
+planeGround.rotation.x = Math.PI / 2;
+scene.add(planeGround);
+
+// skye
+const geometrySphere = new THREE.SphereGeometry(100, 32, 32);
+const materialSphere = new THREE.MeshBasicMaterial({
+  color: 0x87ceeb,
+  side: THREE.DoubleSide,
+});
+const sphere = new THREE.Mesh(geometrySphere, materialSphere);
+sphere.position.set(0, 0, 0);
+scene.add(sphere);
+
+// load clouds gltf
+const loader = new GLTFLoader();
+loader.load("./assets/clouds.gltf", (gltf) => {
+  const clouds = gltf.scene;
+  clouds.position.set(0, 0, 0);
+  clouds.scale.set(0.5, 0.5, 0.5);
+  scene.add(clouds);
+});
 
 camera.position.z = 8;
 
