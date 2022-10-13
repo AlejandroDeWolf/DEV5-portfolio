@@ -75,9 +75,21 @@ planeBack.position.set(0, 0, -8);
 planeBack.rotation.y = Math.PI;
 scene.add(planeBack);
 
+// load wood texture
+const woodTexture = textureLoader.load("./assets/wood.jpg");
+
+// floor material
+const materialFloor = new THREE.MeshPhongMaterial({
+  color: 0xffffff,
+  side: THREE.DoubleSide,
+});
+
+// map wood texture to floor
+materialFloor.map = woodTexture;
+
 // floor plane
 const geometryFloor = new THREE.PlaneGeometry(6, 8);
-const planeFloor = new THREE.Mesh(geometryFloor, materialWalls);
+const planeFloor = new THREE.Mesh(geometryFloor, materialFloor);
 planeFloor.position.set(0, -1.5, -4);
 planeFloor.rotation.x = Math.PI / 2;
 scene.add(planeFloor);
