@@ -36,13 +36,29 @@ scene.add(directionalLight);
 const lightHelper = new THREE.DirectionalLightHelper(directionalLight);
 scene.add(lightHelper);
 
-const geometry = new THREE.PlaneGeometry(1, 1);
-const material = new THREE.MeshBasicMaterial({
-  color: 0xffff00,
+const materialWalls = new THREE.MeshPhongMaterial({
+  color: 0x00ff00,
   side: THREE.DoubleSide,
 });
-const plane = new THREE.Mesh(geometry, material);
+
+// front plane
+const geometry = new THREE.PlaneGeometry(6, 3);
+const plane = new THREE.Mesh(geometry, materialWalls);
 scene.add(plane);
+
+// right side plane
+const geometryRight = new THREE.PlaneGeometry(8, 3);
+const planeRight = new THREE.Mesh(geometryRight, materialWalls);
+planeRight.position.set(3, 0, -4);
+planeRight.rotation.y = Math.PI / 2;
+scene.add(planeRight);
+
+// left side plane
+const geometryLeft = new THREE.PlaneGeometry(8, 3);
+const planeLeft = new THREE.Mesh(geometryLeft, materialWalls);
+planeLeft.position.set(-3, 0, -4);
+planeLeft.rotation.y = Math.PI / 2;
+scene.add(planeLeft);
 
 camera.position.z = 8;
 
