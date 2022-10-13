@@ -94,9 +94,21 @@ planeFloor.position.set(0, -1.5, -4);
 planeFloor.rotation.x = Math.PI / 2;
 scene.add(planeFloor);
 
+// load roof texture
+const roofTexture = textureLoader.load("./assets/roof.jpg");
+
+// roof material
+const materialRoof = new THREE.MeshPhongMaterial({
+  color: 0xffffff,
+  side: THREE.DoubleSide,
+});
+
+// map roof texture to roof
+materialRoof.map = roofTexture;
+
 // roof plane
 const geometryRoof = new THREE.PlaneGeometry(6, 8);
-const planeRoof = new THREE.Mesh(geometryRoof, materialFloor);
+const planeRoof = new THREE.Mesh(geometryRoof, materialRoof);
 planeRoof.position.set(0, 1.5, -4);
 planeRoof.rotation.x = Math.PI / 2;
 planeRoof.rotation.y = Math.PI;
