@@ -94,6 +94,14 @@ planeFloor.position.set(0, -1.5, -4);
 planeFloor.rotation.x = Math.PI / 2;
 scene.add(planeFloor);
 
+// roof plane
+const geometryRoof = new THREE.PlaneGeometry(6, 8);
+const planeRoof = new THREE.Mesh(geometryRoof, materialFloor);
+planeRoof.position.set(0, 1.5, -4);
+planeRoof.rotation.x = Math.PI / 2;
+planeRoof.rotation.y = Math.PI;
+scene.add(planeRoof);
+
 camera.position.z = 8;
 
 function animate() {
