@@ -114,6 +114,18 @@ planeRoof.rotation.x = Math.PI / 2;
 planeRoof.rotation.y = Math.PI;
 scene.add(planeRoof);
 
+// add door
+const doorGeometry = new THREE.BoxGeometry(1, 2, 0.1);
+const door = new THREE.Mesh(doorGeometry, materialFloor);
+door.position.set(0, -0.5, 0);
+scene.add(door);
+
+// door knob
+const knobGeometry = new THREE.SphereGeometry(0.08, 32, 32);
+const knob = new THREE.Mesh(knobGeometry, materialFloor);
+knob.position.set(0.3, -0.5, 0.1);
+scene.add(knob);
+
 camera.position.z = 8;
 
 function animate() {
