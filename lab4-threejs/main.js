@@ -36,10 +36,18 @@ scene.add(directionalLight);
 const lightHelper = new THREE.DirectionalLightHelper(directionalLight);
 scene.add(lightHelper);
 
+// load brick texture
+const textureLoader = new THREE.TextureLoader();
+const brickTexture = textureLoader.load("./assets/bricks.jpg");
+
+// walls material
 const materialWalls = new THREE.MeshPhongMaterial({
-  color: 0x00ff00,
+  color: 0xffffff,
   side: THREE.DoubleSide,
 });
+
+// map brick texture to walls
+materialWalls.map = brickTexture;
 
 // front plane
 const geometry = new THREE.PlaneGeometry(6, 3);
