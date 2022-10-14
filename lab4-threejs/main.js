@@ -31,7 +31,7 @@ controls.autoRotate = true;
 controls.enableDamping = true;
 
 // add ambient light
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
 scene.add(ambientLight);
 
 // add directional light
@@ -45,7 +45,7 @@ scene.add(directionalLight);
 
 // load brick texture
 const textureLoader = new THREE.TextureLoader();
-const brickTexture = textureLoader.load("./assets/bricks.jpg");
+const brickTexture = textureLoader.load("./assets/walls.jpg");
 
 // walls material
 const materialWalls = new THREE.MeshPhongMaterial({
@@ -102,7 +102,7 @@ planeFloor.rotation.x = Math.PI / 2;
 scene.add(planeFloor);
 
 // load roof texture
-const roofTexture = textureLoader.load("./assets/roof.jpg");
+const roofTexture = textureLoader.load("./assets/bricks.jpg");
 
 // roof material
 const materialRoof = new THREE.MeshPhongMaterial({
@@ -123,7 +123,7 @@ scene.add(roof);
 
 // add door
 const doorGeometry = new THREE.BoxGeometry(1, 2, 0.1);
-const door = new THREE.Mesh(doorGeometry, materialFloor);
+const door = new THREE.Mesh(doorGeometry, materialRoof);
 door.position.set(0, -0.5, 0);
 scene.add(door);
 
@@ -193,7 +193,7 @@ const addClouds = (x, y, z) => {
     // make cloud light grey
     clouds.traverse((node) => {
       if (node.isMesh) {
-        node.material.color.set(0x808080);
+        node.material.color.set(0xe1d9d1);
       }
     });
     scene.add(clouds);
@@ -207,6 +207,13 @@ for (let i = 0; i < 30; i++) {
   const z = Math.random() * 400 - 200;
   addClouds(x, y, z);
 }
+
+// load tree gltf next to house and make it smaller
+loader.load("./assets/tree.glb", (gltf) => {
+  const tree = gltf.scene;
+  tree.position.set(-6, -2, -3);
+  scene.add(tree);
+});
 
 camera.position.x = 20;
 camera.position.y = 10;
