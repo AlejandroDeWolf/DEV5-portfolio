@@ -23,6 +23,8 @@ controls.dampingFactor = 0.05;
 controls.screenSpacePanning = false;
 controls.minDistance = 5;
 controls.maxDistance = 80;
+// limit y rotation partially
+controls.maxPolarAngle = Math.PI / 2;
 
 // add ambient light
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
@@ -56,23 +58,23 @@ const plane = new THREE.Mesh(geometry, materialWalls);
 scene.add(plane);
 
 // right side plane
-const geometryRight = new THREE.PlaneGeometry(8, 3);
+const geometryRight = new THREE.PlaneGeometry(6, 3);
 const planeRight = new THREE.Mesh(geometryRight, materialWalls);
-planeRight.position.set(3, 0, -4);
+planeRight.position.set(3, 0, -3);
 planeRight.rotation.y = Math.PI / 2;
 scene.add(planeRight);
 
 // left side plane
-const geometryLeft = new THREE.PlaneGeometry(8, 3);
+const geometryLeft = new THREE.PlaneGeometry(6, 3);
 const planeLeft = new THREE.Mesh(geometryLeft, materialWalls);
-planeLeft.position.set(-3, 0, -4);
+planeLeft.position.set(-3, 0, -3);
 planeLeft.rotation.y = Math.PI / 2;
 scene.add(planeLeft);
 
 // back plane
 const geometryBack = new THREE.PlaneGeometry(6, 3);
 const planeBack = new THREE.Mesh(geometryBack, materialWalls);
-planeBack.position.set(0, 0, -8);
+planeBack.position.set(0, 0, -6);
 planeBack.rotation.y = Math.PI;
 scene.add(planeBack);
 
@@ -89,7 +91,7 @@ const materialFloor = new THREE.MeshPhongMaterial({
 materialFloor.map = woodTexture;
 
 // floor plane
-const geometryFloor = new THREE.PlaneGeometry(6, 8);
+const geometryFloor = new THREE.PlaneGeometry(6, 4);
 const planeFloor = new THREE.Mesh(geometryFloor, materialFloor);
 planeFloor.position.set(0, -1.5, -4);
 planeFloor.rotation.x = Math.PI / 2;
@@ -107,13 +109,13 @@ const materialRoof = new THREE.MeshPhongMaterial({
 // map roof texture to roof
 materialRoof.map = roofTexture;
 
-// roof plane
-const geometryRoof = new THREE.PlaneGeometry(6, 8);
-const planeRoof = new THREE.Mesh(geometryRoof, materialRoof);
-planeRoof.position.set(0, 1.5, -4);
-planeRoof.rotation.x = Math.PI / 2;
-planeRoof.rotation.y = Math.PI;
-scene.add(planeRoof);
+// cone geometry as roof
+const geometryRoof = new THREE.ConeGeometry(4.25, 2, 4);
+const roof = new THREE.Mesh(geometryRoof, materialRoof);
+roof.position.set(0, 2.5, -3);
+// rotate roof
+roof.rotation.y = Math.PI / 4;
+scene.add(roof);
 
 // add door
 const doorGeometry = new THREE.BoxGeometry(1, 2, 0.1);
@@ -165,7 +167,6 @@ const loader = new GLTFLoader();
 loader.load("./assets/clouds.gltf", (gltf) => {
   const clouds = gltf.scene;
   clouds.position.set(0, 0, 0);
-  clouds.scale.set(0.5, 0.5, 0.5);
   scene.add(clouds);
 });
 
