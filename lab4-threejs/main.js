@@ -170,10 +170,6 @@ materialClouds.map = cloudsTexture;
 
 // skye
 const geometrySphere = new THREE.SphereGeometry(200, 32, 32);
-const materialSphere = new THREE.MeshBasicMaterial({
-  color: 0x87ceeb,
-  side: THREE.DoubleSide,
-});
 const sphere = new THREE.Mesh(geometrySphere, materialClouds);
 sphere.position.set(0, 0, 0);
 scene.add(sphere);
@@ -189,7 +185,7 @@ const addClouds = (x, y, z) => {
     // rotate clouds
     clouds.rotation.y = y;
     // make cloud a lot smaller
-    clouds.scale.set(0.03, 0.03, 0.03);
+    clouds.scale.set(0.04, 0.04, 0.04);
     // make cloud light grey
     clouds.traverse((node) => {
       if (node.isMesh) {
@@ -200,8 +196,8 @@ const addClouds = (x, y, z) => {
   });
 };
 
-// add 10 clouds to scene with random positions and rotations behind house
-for (let i = 0; i < 30; i++) {
+// add clouds to scene with random positions and rotations behind house
+for (let i = 0; i < 20; i++) {
   const x = Math.random() * 400 - 200;
   const y = Math.random() * -50 + 100;
   const z = Math.random() * 400 - 200;
