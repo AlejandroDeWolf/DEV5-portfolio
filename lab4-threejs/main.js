@@ -31,7 +31,7 @@ controls.autoRotate = true;
 controls.enableDamping = true;
 
 // add ambient light
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
 scene.add(ambientLight);
 
 // add directional light
@@ -156,13 +156,25 @@ planeGround.position.set(0, -101.2, -4);
 planeGround.rotation.x = Math.PI / 2;
 scene.add(planeGround);
 
+// load clouds texture
+const cloudsTexture = textureLoader.load("./assets/scenery.jpg");
+
+// clouds material
+const materialClouds = new THREE.MeshPhongMaterial({
+  color: 0xffffff,
+  side: THREE.DoubleSide,
+});
+
+// map clouds texture to clouds
+materialClouds.map = cloudsTexture;
+
 // skye
 const geometrySphere = new THREE.SphereGeometry(200, 32, 32);
 const materialSphere = new THREE.MeshBasicMaterial({
   color: 0x87ceeb,
   side: THREE.DoubleSide,
 });
-const sphere = new THREE.Mesh(geometrySphere, materialSphere);
+const sphere = new THREE.Mesh(geometrySphere, materialClouds);
 sphere.position.set(0, 0, 0);
 scene.add(sphere);
 
