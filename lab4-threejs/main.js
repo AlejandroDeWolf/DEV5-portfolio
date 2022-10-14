@@ -36,8 +36,8 @@ directionalLight.position.set(6, 4, 8);
 scene.add(directionalLight);
 
 // add light helper
-const lightHelper = new THREE.DirectionalLightHelper(directionalLight);
-scene.add(lightHelper);
+// const lightHelper = new THREE.DirectionalLightHelper(directionalLight);
+// scene.add(lightHelper);
 
 // load brick texture
 const textureLoader = new THREE.TextureLoader();
@@ -185,14 +185,16 @@ const addClouds = (x, y, z) => {
 };
 
 // add 10 clouds to scene with random positions and rotations behind house
-for (let i = 0; i < 14; i++) {
+for (let i = 0; i < 30; i++) {
   const x = Math.random() * 400 - 200;
-  const y = Math.random() * 140;
-  const z = Math.random() * -100;
+  const y = Math.random() * -50 + 100;
+  const z = Math.random() * 400 - 200;
   addClouds(x, y, z);
 }
 
-camera.position.z = 8;
+camera.position.x = 20;
+camera.position.y = 10;
+camera.position.z = 40;
 
 function animate() {
   requestAnimationFrame(animate);
