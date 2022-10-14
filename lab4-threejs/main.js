@@ -22,7 +22,7 @@ controls.enableDamping = true;
 controls.dampingFactor = 0.05;
 controls.screenSpacePanning = false;
 controls.minDistance = 5;
-controls.maxDistance = 80;
+controls.maxDistance = 140;
 // limit y rotation partially
 controls.maxPolarAngle = Math.PI / 2;
 
@@ -153,7 +153,7 @@ planeGround.rotation.x = Math.PI / 2;
 scene.add(planeGround);
 
 // skye
-const geometrySphere = new THREE.SphereGeometry(100, 32, 32);
+const geometrySphere = new THREE.SphereGeometry(200, 32, 32);
 const materialSphere = new THREE.MeshBasicMaterial({
   color: 0x87ceeb,
   side: THREE.DoubleSide,
@@ -164,11 +164,33 @@ scene.add(sphere);
 
 // load clouds gltf
 const loader = new GLTFLoader();
-loader.load("./assets/clouds.gltf", (gltf) => {
-  const clouds = gltf.scene;
-  clouds.position.set(0, 0, 0);
-  scene.add(clouds);
-});
+
+const addClouds = (x, y, z) => {
+  loader.load("./assets/clouds.gltf", (gltf) => {
+    const clouds = gltf.scene;
+    // position cloud higher
+    clouds.position.set(x, y, z);
+    // rotate clouds
+    clouds.rotation.y = y;
+    // make cloud a lot smaller
+    clouds.scale.set(0.03, 0.03, 0.03);
+    // make cloud light grey
+    clouds.traverse((node) => {
+      if (node.isMesh) {
+        node.material.color.set(0x808080);
+      }
+    });
+    scene.add(clouds);
+  });
+};
+
+// add 10 clouds to scene with random positions and rotations behind house
+for (let i = 0; i < 14; i++) {
+  const x = Math.random() * 400 - 200;
+  const y = Math.random() * 140;
+  const z = Math.random() * -100;
+  addClouds(x, y, z);
+}
 
 camera.position.z = 8;
 
