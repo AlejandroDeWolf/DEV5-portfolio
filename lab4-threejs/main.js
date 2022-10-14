@@ -25,6 +25,10 @@ controls.minDistance = 5;
 controls.maxDistance = 140;
 // limit y rotation partially
 controls.maxPolarAngle = Math.PI / 2;
+// controls auto rotate
+controls.autoRotate = true;
+// controls enable damping
+controls.enableDamping = true;
 
 // add ambient light
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
@@ -198,6 +202,8 @@ camera.position.z = 40;
 
 function animate() {
   requestAnimationFrame(animate);
+
+  // rotate camera around scene
 
   controls.update();
 
