@@ -98,7 +98,7 @@ materialKame.map = kameTexture;
 // plane on top of door
 const geometryKame = new THREE.PlaneGeometry(2, 2);
 const planeKame = new THREE.Mesh(geometryKame, materialKame);
-planeKame.position.set(0, 2.3, 0.01);
+planeKame.position.set(-1, 2.3, 0.01);
 // rotate planeKame 45 degrees
 planeKame.rotation.z = Math.PI / 6;
 // make planeKame bigger
@@ -112,18 +112,15 @@ const alejandroTexture = textureLoader.load("./assets/alejandro.png");
 const materialAlejandro = new THREE.MeshPhongMaterial({
   color: 0xffffff,
   side: THREE.DoubleSide,
-  transparent: true,
 });
 
 // map alejandro texture to alejandro
 materialAlejandro.map = alejandroTexture;
 
 // plane on back of the house
-const geometryAlejandro = new THREE.PlaneGeometry(2, 2);
+const geometryAlejandro = new THREE.PlaneGeometry(2, 1);
 const planeAlejandro = new THREE.Mesh(geometryAlejandro, materialAlejandro);
-planeAlejandro.position.set(0, 2.3, -7);
-// make planeAlejandro bigger
-planeAlejandro.scale.set(1.8, 1.8, 1.8);
+planeAlejandro.position.set(0, 2.3, -6.01);
 // flip planeAlejandro
 planeAlejandro.rotation.y = Math.PI;
 scene.add(planeAlejandro);
