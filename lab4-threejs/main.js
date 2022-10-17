@@ -57,30 +57,53 @@ const materialWalls = new THREE.MeshPhongMaterial({
 materialWalls.map = brickTexture;
 
 // front plane
-const geometry = new THREE.PlaneGeometry(6, 3);
+const geometry = new THREE.PlaneGeometry(6, 8);
 const plane = new THREE.Mesh(geometry, materialWalls);
 scene.add(plane);
 
 // right side plane
-const geometryRight = new THREE.PlaneGeometry(6, 3);
+const geometryRight = new THREE.PlaneGeometry(6, 8);
 const planeRight = new THREE.Mesh(geometryRight, materialWalls);
 planeRight.position.set(3, 0, -3);
 planeRight.rotation.y = Math.PI / 2;
 scene.add(planeRight);
 
 // left side plane
-const geometryLeft = new THREE.PlaneGeometry(6, 3);
+const geometryLeft = new THREE.PlaneGeometry(6, 8);
 const planeLeft = new THREE.Mesh(geometryLeft, materialWalls);
 planeLeft.position.set(-3, 0, -3);
 planeLeft.rotation.y = Math.PI / 2;
 scene.add(planeLeft);
 
 // back plane
-const geometryBack = new THREE.PlaneGeometry(6, 3);
+const geometryBack = new THREE.PlaneGeometry(6, 8);
 const planeBack = new THREE.Mesh(geometryBack, materialWalls);
 planeBack.position.set(0, 0, -6);
 planeBack.rotation.y = Math.PI;
 scene.add(planeBack);
+
+// load kame texture
+const kameTexture = textureLoader.load("./assets/kame.png");
+
+// kame material
+const materialKame = new THREE.MeshPhongMaterial({
+  color: 0xffffff,
+  side: THREE.DoubleSide,
+  transparent: true,
+});
+
+// map kame texture to kame
+materialKame.map = kameTexture;
+
+// plane on top of door
+const geometryKame = new THREE.PlaneGeometry(2, 2);
+const planeKame = new THREE.Mesh(geometryKame, materialKame);
+planeKame.position.set(0, 2.3, 0.01);
+// rotate planeKame 45 degrees
+planeKame.rotation.z = Math.PI / 6;
+// make planeKame bigger
+planeKame.scale.set(1.8, 1.8, 1.8);
+scene.add(planeKame);
 
 // load wood texture
 const woodTexture = textureLoader.load("./assets/wood.jpg");
@@ -114,9 +137,9 @@ const materialRoof = new THREE.MeshPhongMaterial({
 materialRoof.map = roofTexture;
 
 // cone geometry as roof
-const geometryRoof = new THREE.ConeGeometry(4.25, 2, 4);
+const geometryRoof = new THREE.ConeGeometry(4.25, 4, 4);
 const roof = new THREE.Mesh(geometryRoof, materialRoof);
-roof.position.set(0, 2.5, -3);
+roof.position.set(0, 6, -3);
 // rotate roof
 roof.rotation.y = Math.PI / 4;
 scene.add(roof);
