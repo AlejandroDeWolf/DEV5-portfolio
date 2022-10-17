@@ -105,6 +105,29 @@ planeKame.rotation.z = Math.PI / 6;
 planeKame.scale.set(1.8, 1.8, 1.8);
 scene.add(planeKame);
 
+// load alejandro texture
+const alejandroTexture = textureLoader.load("./assets/alejandro.png");
+
+// alejandro material
+const materialAlejandro = new THREE.MeshPhongMaterial({
+  color: 0xffffff,
+  side: THREE.DoubleSide,
+  transparent: true,
+});
+
+// map alejandro texture to alejandro
+materialAlejandro.map = alejandroTexture;
+
+// plane on back of the house
+const geometryAlejandro = new THREE.PlaneGeometry(2, 2);
+const planeAlejandro = new THREE.Mesh(geometryAlejandro, materialAlejandro);
+planeAlejandro.position.set(0, 2.3, -7);
+// make planeAlejandro bigger
+planeAlejandro.scale.set(1.8, 1.8, 1.8);
+// flip planeAlejandro
+planeAlejandro.rotation.y = Math.PI;
+scene.add(planeAlejandro);
+
 // load wood texture
 const woodTexture = textureLoader.load("./assets/wood.jpg");
 
