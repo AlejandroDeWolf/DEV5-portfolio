@@ -13,7 +13,6 @@ onMounted(() => {
     });
 });
 
-// push comment and username to comments array and post to api
 const addComment = () => {
   comments.comments.push({ user: "Alejandro", text: comment.value });
   fetch(api_url, {
@@ -31,17 +30,50 @@ const addComment = () => {
 </script>
 
 <template>
-  <div>
+  <div class="comments">
     <h2>Comments</h2>
-    <div v-for="comment in comments.comments" :key="comment.id">
-      <h3>{{ comment.user }}</h3>
-      <p>{{ comment.text }}</p>
+    <div class="comments__section">
+      <div v-for="comment in comments.comments" :key="comment.id">
+        <h3>{{ comment.user }}</h3>
+        <p>{{ comment.text }}</p>
+      </div>
     </div>
-    <div>
+    <div class="comments__input">
       <input type="text" v-model="comment" />
       <button @click="addComment">Add Comment</button>
     </div>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.comments {
+  width: 80%;
+}
+.comments__section {
+  max-height: 60vh;
+  overflow-y: scroll;
+  margin-bottom: 2rem;
+}
+
+.comments__section div {
+  border: 1px solid black;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.comments__input {
+  width: 100%;
+  display: flex;
+}
+
+.comments__input input {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.2rem;
+}
+
+.comments__input button {
+  padding: 1rem;
+  font-size: 1.2rem;
+}
+</style>
