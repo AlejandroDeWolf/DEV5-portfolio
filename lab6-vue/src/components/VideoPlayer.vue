@@ -4,7 +4,7 @@ import "animate.css";
 
 let src = ref("");
 let videos = reactive({ videos: [] });
-let animation = ref("animatefadeIn");
+let animation = ref("animate__fadeIn");
 
 onMounted(() => {
   let api_url = "../../db.json";
@@ -20,9 +20,9 @@ let index = ref(0);
 
 const nextvideo = () => {
   index.value++;
-  animation.value = "animatefadeOut";
+  animation.value = "animate__fadeOut";
   setTimeout(() => {
-    animation.value = "animatefadeIn";
+    animation.value = "animate__fadeIn";
   }, 500);
   src.value = videos.videos[index.value].video;
 };
@@ -32,7 +32,7 @@ const nextvideo = () => {
   <div>
     <div class="videoplayer">
       <div class="controls">
-        <a @click="nextvideo" href="#" class="controlsnext">➜</a>
+        <a @click="nextvideo" href="#" class="controls__next">➜</a>
       </div>
       <video
         :class="animation"
