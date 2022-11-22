@@ -1,7 +1,5 @@
-# Vue 3 + Vite
+# Welcome to lab 6!
+Welcome to my sixth lab project.
+For this exercise I made a TikTok clone with Vue.js. The video's are fetched from a local database and the comments from a comments API.
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
-
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+If you want to see it live, [here](https://lab4-threejs.vercel.app/) is a link to a live-preview.
